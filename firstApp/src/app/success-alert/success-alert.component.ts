@@ -9,7 +9,8 @@ export class SuccessAlertComponent implements OnInit {
   AllowNewServer = false;
   ServerCreatedStatus = '';
   serverName = '';
-  serverCreated = false
+  serverCreated = false;
+  servers = [];
 
   constructor() {
     setTimeout(() => {
@@ -20,6 +21,7 @@ export class SuccessAlertComponent implements OnInit {
   ngOnInit() {
   }
   onCreateServer() {
+    this.servers.push(this.serverName)
     this.serverCreated = true
     this.ServerCreatedStatus = 'Server Created Successfully! ' + 'Server Name:' + this.serverName;
 
@@ -30,6 +32,14 @@ export class SuccessAlertComponent implements OnInit {
   }
   onResetServer() {
     this.serverName = ''
+  }
+
+  deleteServers() {
+    this.servers = [];
+  }
+
+  delete() {
+    this.servers.pop()
   }
 
 

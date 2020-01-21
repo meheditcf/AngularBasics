@@ -18,10 +18,18 @@
 
 
     </div>
-    <div class="col-md-9">
-        <button class="btn btn-danger" [disabled]="serverName===''" (click)="serverName=''">
+    <div class="col-md-3">
+        <button class="btn btn-success" [disabled]="serverName===''" (click)="serverName=''">
 
             Reset
+
+        </button>
+
+    </div>
+    <div class="col-md-6">
+        <button class="btn btn-danger" [disabled]="serverName===''" (click)="deleteServers()">
+
+            Delete All
 
         </button>
 
@@ -33,3 +41,12 @@
 <ng-template #noServer>
     <p>No server was created!</p>
 </ng-template>
+<p class="list-group-item list-group-item-action list-group-item-secondary" *ngIf="serverCreated;">My Servers</p>
+
+
+<ul class="list-group">
+    <li *ngFor="let server of servers" class="list-group-item d-flex justify-content-between align-items-center">
+        {{server}}
+        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+    </li>
+</ul>
