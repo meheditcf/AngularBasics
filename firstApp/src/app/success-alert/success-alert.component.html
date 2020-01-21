@@ -19,7 +19,7 @@
 
     </div>
     <div class="col-md-3">
-        <button class="btn btn-success" [disabled]="serverName===''" (click)="serverName=''">
+        <button class="btn btn-info" [disabled]="serverName===''" (click)="serverName=''">
 
             Reset
 
@@ -27,7 +27,7 @@
 
     </div>
     <div class="col-md-6">
-        <button class="btn btn-danger" [disabled]="serverName===''" (click)="deleteServers()">
+        <button *ngIf="serverCreated" class="btn btn-danger" (click)="deleteServers()">
 
             Delete All
 
@@ -37,16 +37,21 @@
 
 </div>
 <br>
-<p *ngIf="serverCreated;else noServer">{{ ServerCreatedStatus }}</p>
-<ng-template #noServer>
-    <p>No server was created!</p>
-</ng-template>
+<p class="list-group-item list-group-item-action list-group-item-success" *ngIf="serverCreated;">
+    {{ ServerCreatedStatus }}</p>
+
+<!-- else if logic -->
+<!-- <ng-template #DelServer>
+    <p class="list-group-item list-group-item-action list-group-item-danger" *ngIf="serverDeleted;">
+        Server Deleted </p>
+</ng-template> -->
 <p class="list-group-item list-group-item-action list-group-item-secondary" *ngIf="serverCreated;">My Servers</p>
 
 
 <ul class="list-group">
-    <li *ngFor="let server of servers" class="list-group-item d-flex justify-content-between align-items-center">
+    <li *ngFor="let server of servers; let i = index"
+        class="list-group-item d-flex justify-content-between align-items-center">
         {{server}}
-        <button type="button" class="btn btn-danger" (click)="delete()">Delete</button>
+        <button type="button" class="btn btn-danger" (click)="servers.splice(i, 1)">Delete</button>
     </li>
 </ul>
