@@ -1,0 +1,35 @@
+<label>Server Name</label>
+
+<!-- Data binding by method calling -->
+<!-- <input type="text" class="form-control" (input)="OnUpdateServerName($event)"> -->
+
+<!-- Two way data binding -->
+<input type="text" class="form-control" [(ngModel)]="serverName"> <br>
+
+
+<div class="row">
+    <div class="col-md-3">
+        <button class="btn btn-secondary" [disabled]="!serverName" (click)="onCreateServer()">
+
+            Add Server
+
+        </button>
+
+
+
+    </div>
+    <div class="col-md-9">
+        <button class="btn btn-danger" [disabled]="serverName===''" (click)="serverName=''">
+
+            Reset
+
+        </button>
+
+    </div>
+
+</div>
+<br>
+<p *ngIf="serverCreated;else noServer">{{ ServerCreatedStatus }}</p>
+<ng-template #noServer>
+    <p>No server was created!</p>
+</ng-template>
