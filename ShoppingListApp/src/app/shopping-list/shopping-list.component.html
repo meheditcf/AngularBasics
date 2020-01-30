@@ -1,15 +1,5 @@
-<p>shopping-list works!</p>
-<ul>
-    <li>
-        Apple
-    </li>
-    <li>
-        Mango
-    </li>
-    <li>
-        Orange
-    </li>
-    <li>
-        Guava
-    </li>
-</ul>
+<div class="container">
+    <app-shopping-edit (itemAdded)="onAddedItem($event)"></app-shopping-edit>
+
+    <p *ngFor="let item of items">{{ item.name }} ({{ item.price }})</p>
+</div>
