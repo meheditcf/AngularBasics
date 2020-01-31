@@ -7,5 +7,28 @@
       <app-false *ngFor="let oddNumber of oddNumbers" [number]="oddNumber"></app-false>
       <app-even *ngFor="let evenNumber of evenNumbers" [number]="evenNumber"></app-even>
     </div>
+    <div class="col-xs-12">
+      <button class="btn btn-primary" (click)="oddNum = !oddNum">
+        Show Odd Numbers
+
+      </button>
+      <ul>
+        <div *ngIf="!oddNum">
+          <li *ngFor="let evenNum of testEvenNumbers" [ngClass]="{red: evenNum%2 ==0}">
+            {{ evenNum }}
+
+          </li>
+        </div>
+        <div>
+          <li *ngFor="let oddNum of testOddNumbers">
+            {{ oddNum }}
+
+          </li>
+
+        </div>
+
+
+      </ul>
+    </div>
   </div>
 </div>

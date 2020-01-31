@@ -1,1 +1,45 @@
 <app-child [count]=value (countChange)=changeCount($event)></app-child>
+
+<h1>Table</h1>
+
+<div class="container">
+
+  <br />
+
+
+  <table class="table">
+
+    <thead>
+
+      <th>Id</th>
+
+      <th>Title</th>
+
+      <th>Price</th>
+
+      <th>Stock</th>
+
+    </thead>
+
+    <tbody>
+
+      <tr *ngFor="let p of products">
+
+        <td>{{p.id}}</td>
+
+        <td>{{p.title}}</td>
+
+        <td>{{p.price}}</td>
+
+        <td>{{p.stock}}</td>
+        <td>
+          <app-child [productId]='p.id' [stock]='p.stock' (stockValueChange)='changeStockValue($event)'></app-child>
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
